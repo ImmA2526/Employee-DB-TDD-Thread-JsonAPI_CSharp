@@ -316,10 +316,10 @@ namespace EmployeePayrol_DB
         }
 
         /// <summary>
-        /// UC 6 Insert Record.
+        /// UC 8 Insert Record.
         /// </summary>
         /// <exception cref="Exception"></exception>
-
+        ///
         public bool AddRecord(EmployeeModel Model)
         {
             try
