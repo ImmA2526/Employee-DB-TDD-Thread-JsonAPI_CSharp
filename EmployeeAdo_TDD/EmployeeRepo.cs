@@ -343,6 +343,19 @@ namespace EmployeePayrol_DB
                     this.Connection.Open();
                     var result = CMD.ExecuteNonQuery();
                     this.Connection.Close();
+
+                    int employee_id = Model.Id;
+                    SqlCommand sqlCommand = new SqlCommand("SpPayrollDeatil", this.Connection);
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    sqlCommand.Parameters.AddWithValue("@EmployeeId", (Model.Id));
+                    sqlCommand.Parameters.AddWithValue("@Deduction", (Model.deduction));
+                    sqlCommand.Parameters.AddWithValue("@TaxablePay", (Model.taxable));
+                    sqlCommand.Parameters.AddWithValue("@NetPay", (Model.netpay));
+                    sqlCommand.Parameters.AddWithValue("@Tax", (Model.income_tax));
+                    this.Connection.Open();
+                    var result1 = sqlCommand.ExecuteNonQuery();
+                    this.Connection.Close();
+
                     if (result != 0)
                     {
                         return true;
@@ -359,6 +372,5 @@ namespace EmployeePayrol_DB
                 this.Connection.Close();
             }
         }
-
     }
 }

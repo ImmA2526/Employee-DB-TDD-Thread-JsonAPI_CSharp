@@ -123,6 +123,7 @@ namespace EmployeePayrollsTester
 
         /// <summary>
         /// Uc 6 Add Record
+        /// UC 7 Add with Salary Deduction
         /// </summary>
         [TestMethod]
         public void Add_RecordWhen_QueryGiven()
