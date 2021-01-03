@@ -46,5 +46,18 @@ namespace EmployeePayrollsTester
             decimal salary = Check.UpdateSalary(Model);
             Assert.AreEqual(Result, salary);
         }
+
+        /// <summary>
+        /// 4 Returns the count when query given.
+        /// </summary>
+        [TestMethod]
+        public void ReturnCount_WhenQueryGiven()
+        {
+            int countResult = 12;
+            EmployeeRepo Check = new EmployeeRepo();
+            int result = Check.RetriveParticualrRecord();
+            Assert.AreEqual(countResult, result);
+
+        }
     }
 }

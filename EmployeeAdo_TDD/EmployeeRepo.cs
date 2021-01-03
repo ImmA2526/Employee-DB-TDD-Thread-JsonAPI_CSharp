@@ -103,5 +103,40 @@ namespace EmployeePayrol_DB
                 throw new Exception(e.Message);
             }
         }
+
+        /// <summary>
+        /// UC 4 Retrives the particualr record.
+        /// </summary>
+        public int RetriveParticualrRecord()
+        {
+            int result = 0;
+            try
+            {
+                EmployeeModel getParticularData = new EmployeeModel();
+                using (this.Connection)
+                {
+                    string retriveQuery = @"select Count(Id) from EmployeePayroll where start_Date between CAST('2005-01-05' as date) AND GETDATE();";
+                    SqlCommand CMD = new SqlCommand(retriveQuery, this.Connection);
+                    this.Connection.Open();
+                    result = (int)CMD.ExecuteScalar();
+                    SqlDataReader reader = CMD.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            getParticularData.Id = reader.GetInt32(0);
+                            Console.WriteLine("{0}", getParticularData.Id);
+                        }
+                    }
+                    reader.Close();
+                    this.Connection.Close();
+                }
+                return result;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
