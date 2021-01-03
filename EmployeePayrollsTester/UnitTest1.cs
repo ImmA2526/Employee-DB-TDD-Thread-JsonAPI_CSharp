@@ -29,7 +29,22 @@ namespace EmployeePayrollsTester
             int result = 12;
             Assert.AreEqual(retrives, result);
         }
+
+        /// <summary>
+        /// UC 3 Update Salary
+        /// </summary>
+        [TestMethod]
+        public void UpdateSalary_WhenQueryisGiven()
+        {
+            decimal Result = 300000;
+            EmployeeRepo Check = new EmployeeRepo();
+            EmployeeModel Model = new EmployeeModel()
+            {
+                name = "bob",
+                basic_pay = 300000
+            };
+            decimal salary = Check.UpdateSalary(Model);
+            Assert.AreEqual(Result, salary);
+        }
     }
-
-
 }

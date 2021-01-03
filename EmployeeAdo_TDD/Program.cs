@@ -8,7 +8,9 @@ namespace EmployeePayrol_DB
         {
             Console.WriteLine("************Welcome To EmployeeDataBase************");
             EmployeeRepo Repo = new EmployeeRepo();
-            Repo.GetAllEmployee();
+            EmployeeModel Model = new EmployeeModel();
+            //Repo.GetAllEmployee();
+            Repo.UpdateSalary(Model);
         }
     }
 }

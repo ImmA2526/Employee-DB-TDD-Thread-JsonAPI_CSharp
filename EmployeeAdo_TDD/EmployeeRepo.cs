@@ -79,5 +79,29 @@ namespace EmployeePayrol_DB
                 throw new Exception(e.Message);
             }
         }
+
+        public decimal UpdateSalary(EmployeeModel updateModel)
+        {
+            try
+            {
+                using (this.Connection)
+                {
+                    SqlCommand updateCmd = new SqlCommand("SpUpdateSalary", this.Connection);
+                    updateCmd.CommandType = CommandType.StoredProcedure;
+                    updateCmd.Parameters.AddWithValue("@name", updateModel.name);
+                    updateCmd.Parameters.AddWithValue("@basic_pay", updateModel.basic_pay);
+                    this.Connection.Open();
+                    updateCmd.ExecuteNonQuery();
+                    Console.WriteLine("Salary Updated Succes");
+                    this.Connection.Close();
+                    //Console.WriteLine("{0},{1},{2},{3},{4},{5}", updateModel.Id, updateModel.name, updateModel.jobDiscription, updateModel.start_date, updateModel.salary, updateModel.salaryID);
+                }
+                return updateModel.basic_pay;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

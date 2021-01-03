@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace EmployeePayrol_DB
 {
-    class EmployeeModel
+    public class EmployeeModel
     {
         public int Id { get; set; }   
         public string name { get; set; }
