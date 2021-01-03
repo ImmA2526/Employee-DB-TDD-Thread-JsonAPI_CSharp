@@ -372,5 +372,40 @@ namespace EmployeePayrol_DB
                 this.Connection.Close();
             }
         }
+
+        /// <summary>
+        /// UC 11 Delete Detail..
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public bool DeleteEmployeeUsingID(EmployeeModel model)
+        {
+            try
+            {
+                using (this.Connection)
+                {
+                    SqlCommand command = new SqlCommand("deletProcedure", Connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Id", model.Id);
+                    Connection.Open();
+                    command.ExecuteNonQuery();
+                    Connection.Close();
+
+                    SqlCommand command1 = new SqlCommand("deletPayrollDetail", Connection);
+                    command1.CommandType = CommandType.StoredProcedure;
+                    command1.Parameters.AddWithValue("@EmployeeId", model.Id);
+                    Connection.Open();
+                    command1.ExecuteNonQuery();
+                    Connection.Close();
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+                throw new Exception(e.Message);
+
+            }
+        }
     }
 }

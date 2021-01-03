@@ -148,5 +148,22 @@ namespace EmployeePayrollsTester
             bool result = employeePayrollRepo.AddRecord(model);
             Assert.AreEqual(expected, result);
         }
+
+        /// <summary>
+        /// Uc 11 Add Record
+        /// </summary>
+        [TestMethod]
+        public void Delete_RecordByID()
+        {
+            bool expected = true;
+            EmployeeRepo employeePayrollRepo = new EmployeeRepo();
+            EmployeeModel model = new EmployeeModel
+            {
+                Id = 108,
+            };
+            bool result = employeePayrollRepo.DeleteEmployeeUsingID(model);
+            Assert.AreEqual(expected, result);
+        }
+
     }
 }
