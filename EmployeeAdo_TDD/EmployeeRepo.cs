@@ -314,5 +314,51 @@ namespace EmployeePayrol_DB
                 throw new Exception(e.Message);
             }
         }
+
+        /// <summary>
+        /// UC 6 Insert Record.
+        /// </summary>
+        /// <exception cref="Exception"></exception>
+
+        public bool AddRecord(EmployeeModel Model)
+        {
+            try
+            {
+                using (this.Connection)
+                {
+                    SqlCommand CMD = new SqlCommand("SpAddEmployeePayroll", this.Connection);
+                    CMD.CommandType = CommandType.StoredProcedure;
+                    CMD.Parameters.AddWithValue("@Id", Model.Id);
+                    CMD.Parameters.AddWithValue("@name", Model.name);
+                    CMD.Parameters.AddWithValue("@basic_pay", Model.basic_pay);
+                    CMD.Parameters.AddWithValue("@start_Date", Model.start_Date);
+                    CMD.Parameters.AddWithValue("@gender", Model.gender);
+                    CMD.Parameters.AddWithValue("@phoneNumber", Model.phoneNumber);
+                    CMD.Parameters.AddWithValue("@department", Model.department);
+                    CMD.Parameters.AddWithValue("@address", Model.address);
+                    CMD.Parameters.AddWithValue("@deduction", Model.deduction);
+                    CMD.Parameters.AddWithValue("@taxable", Model.taxable);
+                    CMD.Parameters.AddWithValue("@netpay", Model.netpay);
+                    CMD.Parameters.AddWithValue("@income_tax", Model.income_tax);
+                    this.Connection.Open();
+                    var result = CMD.ExecuteNonQuery();
+                    this.Connection.Close();
+                    if (result != 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                this.Connection.Close();
+            }
+        }
+
     }
 }

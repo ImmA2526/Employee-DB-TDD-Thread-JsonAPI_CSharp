@@ -1,5 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using EmployeePayrol_DB;
+using System;
+
 namespace EmployeePayrollsTester
 {
     /// <summary>
@@ -26,7 +28,7 @@ namespace EmployeePayrollsTester
         {
             EmployeeRepo retrive = new EmployeeRepo();
             int retrives = retrive.GetAllEmployee();
-            int result = 12;
+            int result = 13;
             Assert.AreEqual(retrives, result);
         }
 
@@ -53,7 +55,7 @@ namespace EmployeePayrollsTester
         [TestMethod]
         public void ReturnCount_WhenQueryGiven()
         {
-            int countResult = 12;
+            int countResult = 15;
             EmployeeRepo Check = new EmployeeRepo();
             int result = Check.RetriveParticualrRecord();
             Assert.AreEqual(countResult, result);
@@ -77,7 +79,7 @@ namespace EmployeePayrollsTester
         [TestMethod]
         public void GivenEmployeeNames_WhenAvgSalary_ThenReturnExpectedAvgSalary()
         {
-            int expected = 233333;
+            int expected = 341666;
             EmployeeRepo emprepo = new EmployeeRepo();
             int avg = emprepo.getAvragSalary();
             Assert.AreEqual(expected, avg);
@@ -117,6 +119,33 @@ namespace EmployeePayrollsTester
             EmployeeRepo emprepo = new EmployeeRepo();
             int count = emprepo.getCountSalary();
             Assert.AreEqual(expected, count);
+        }
+
+        /// <summary>
+        /// Uc 6 Add Record
+        /// </summary>
+        [TestMethod]
+        public void Add_RecordWhen_QueryGiven()
+        {
+            bool expected = true;
+            EmployeeRepo employeePayrollRepo = new EmployeeRepo();
+            EmployeeModel model = new EmployeeModel
+            {
+                Id = 108,
+                name = "Ashsih",
+                basic_pay = 450000,
+                start_Date = new DateTime(2016, 07, 04),
+                gender = 'M',
+                phoneNumber = "3216549870",
+                address = "golai",
+                department = "Finance",
+                deduction = 6600,
+                taxable = 5500,
+                netpay = 4000,
+                income_tax = 5000,
+            };
+            bool result = employeePayrollRepo.AddRecord(model);
+            Assert.AreEqual(expected, result);
         }
     }
 }
