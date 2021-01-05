@@ -43,7 +43,7 @@ namespace EmployeePayrollsTester
                 name = "Abhilasha",
                 basic_pay = 80000,
                 start_Date = new DateTime(2020, 01, 04),
-                gender = 'M',
+                gender = 'F',
                 phoneNumber = "1045676655",
                 department = "Finance",
                 address = "Pune",

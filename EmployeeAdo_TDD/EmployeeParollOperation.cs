@@ -8,7 +8,7 @@ namespace EmployeePayrol_DB
     public class EmployeePayrollOperation
     {
         public List<EmployeeModel> modelList = new List<EmployeeModel>();
-        EmployeeRepo payrollRepo = new EmployeeRepo();
+        //EmployeeRepo payrollRepo = new EmployeeRepo();
 
         /// <summary>
         /// Adds the employee to payroll.
