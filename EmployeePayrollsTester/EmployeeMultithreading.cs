@@ -14,7 +14,7 @@ namespace EmployeePayrollsTester
         /// UC 1 Multithreding
         /// </summary>
         [TestMethod]
-        public void TestMethod1()
+        public void AddRecord_AndClaulate_ExecutionTime()
         {
             List<EmployeeModel> modelList = new List<EmployeeModel>();
             modelList.Add(new EmployeeModel() { Id = 1, name = "Imran", basic_pay = 450000, start_Date = new DateTime(2020, 01, 04), gender = 'M', phoneNumber = "2345676655", department = "HR", address = "Pune", deduction = 4000, taxable =4500, netpay = 5600, income_tax = 546.00 });
@@ -62,6 +62,35 @@ namespace EmployeePayrollsTester
             employeePayroll.AddEmployee_WithThread(modelList);
             DateTime endTimeWithThread = DateTime.Now;
             Console.WriteLine("Duration with thread = " + (startTimeWithThread - endTimeWithThread));
+        }
+
+        /// <summary>
+        /// UC 5 Add Multiple Record
+        /// </summary>
+        [TestMethod]
+        public void AddMultiple_Record()
+        {
+            EmployeeRepo payrollRepo = new EmployeeRepo();
+            EmployeeModel employeeModel = new EmployeeModel
+            {
+                Id = 153,
+                name = "Pratibha",
+                basic_pay = 804000,
+                start_Date = new DateTime(2020, 01, 04),
+                gender = 'F',
+                phoneNumber = "9995676655",
+                department = "Finance",
+                address = "Mumbai",
+                deduction = 6500,
+                taxable = 9500,
+                netpay = 9760,
+                income_tax = 12000.00
+            };
+
+            DateTime startTimes = DateTime.Now;
+            payrollRepo.AddRecord(employeeModel);
+            DateTime endTimes = DateTime.Now;
+            Console.WriteLine("Duration without thread = " + (endTimes - startTimes));
         }
     }
 }
