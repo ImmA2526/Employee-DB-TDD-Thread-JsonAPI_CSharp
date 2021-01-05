@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using EmployeePayrol_DB;
 using System;
+using System.Linq;
 
 namespace EmployeePayrollsTester
 {
@@ -164,6 +165,5 @@ namespace EmployeePayrollsTester
             bool result = employeePayrollRepo.DeleteEmployeeUsingID(model);
             Assert.AreEqual(expected, result);
         }
-
     }
 }

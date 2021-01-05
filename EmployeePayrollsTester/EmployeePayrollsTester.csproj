@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EmployeeAdo_TDD\EmployeePayrol_DB.csproj" />
+    <ProjectReference Include="..\EmployeeAdo_TDD\EmployeePayroll_MultiThread.csproj" />
   </ItemGroup>
 
 </Project>
