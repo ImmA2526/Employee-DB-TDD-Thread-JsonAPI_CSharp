@@ -37,7 +37,7 @@ namespace EmployeePayrol_DB
 
         /// <summary>
         /// UC 2 Adds the employee to payroll with thread.
-        /// </summary>
+        //./ </summary>
         /// <param name="employeelist">The employeelist.</param>
         public void AddEmployee_WithThread(List<EmployeeModel> employeelist)
         {

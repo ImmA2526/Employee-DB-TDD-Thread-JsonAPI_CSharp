@@ -39,12 +39,12 @@ namespace EmployeePayrollsTester
             EmployeeRepo payrollRepo = new EmployeeRepo();
             EmployeeModel employeeModel = new EmployeeModel
             {
-                Id = 15,
-                name = "Simran",
-                basic_pay = 850000,
+                Id = 151,
+                name = "Abhilasha",
+                basic_pay = 80000,
                 start_Date = new DateTime(2020, 01, 04),
                 gender = 'M',
-                phoneNumber = "0045676655",
+                phoneNumber = "1045676655",
                 department = "Finance",
                 address = "Pune",
                 deduction = 4500,
