@@ -34,5 +34,25 @@ namespace EmployeePayrol_DB
             modelList.Add(employeeData);
 
         }
+
+        /// <summary>
+        /// UC 2 Adds the employee to payroll with thread.
+        /// </summary>
+        /// <param name="employeelist">The employeelist.</param>
+        public void AddEmployee_WithThread(List<EmployeeModel> employeelist)
+        {
+            employeelist.ForEach(employeeData =>
+            {
+                Task thread = new Task(() =>
+                {
+                    Console.WriteLine("Employee being added = " + employeeData.name);
+                    this.AddEmployeeToPayroll(employeeData);
+                    Console.WriteLine("Employee added =" + employeeData.name);
+                });
+
+                thread.Start();
+            });
+            Console.WriteLine(this.modelList.Count);
+        }
     }
 }

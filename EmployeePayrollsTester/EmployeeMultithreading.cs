@@ -28,6 +28,8 @@ namespace EmployeePayrollsTester
             modelList.Add(new EmployeeModel() { Id = 10, name = "wankhede", basic_pay = 450000, start_Date = new DateTime(2020, 01, 04), gender = 'M', phoneNumber = "2345676655", department = "HR", address = "Pune", deduction = 4000, taxable =4500, netpay = 5600, income_tax = 546.00 });
             modelList.Add(new EmployeeModel() { Id = 11, name = "suraj", basic_pay = 450000, start_Date = new DateTime(2020, 01, 04), gender = 'M', phoneNumber = "2345676655", department = "HR", address = "Pune", deduction = 4000, taxable =4500, netpay = 5600, income_tax = 546.00 });
             modelList.Add(new EmployeeModel() { Id = 12, name = "Dhiraj", basic_pay = 450000, start_Date = new DateTime(2020, 01, 04), gender = 'M', phoneNumber = "2345676655", department = "HR", address = "Pune", deduction = 4000, taxable =4500, netpay = 5600, income_tax = 546.00 });
+            modelList.Add(new EmployeeModel() { Id = 14, name = "siraj", basic_pay = 450000, start_Date = new DateTime(2020, 01, 04), gender = 'M', phoneNumber = "2345676655", department = "HR", address = "Pune", deduction = 4000, taxable = 4500, netpay = 5600, income_tax = 546.00 });
+            modelList.Add(new EmployeeModel() { Id = 15, name = "simran", basic_pay = 450000, start_Date = new DateTime(2020, 01, 04), gender = 'F', phoneNumber = "2345676655", department = "HR", address = "Pune", deduction = 4000, taxable = 4500, netpay = 5600, income_tax = 546.00 });
 
             EmployeePayrollOperation employeePayroll = new EmployeePayrollOperation();
             DateTime startTime = DateTime.Now;
@@ -37,25 +39,30 @@ namespace EmployeePayrollsTester
             EmployeeRepo payrollRepo = new EmployeeRepo();
             EmployeeModel employeeModel = new EmployeeModel
             {
-                Id = 1,
-                name = "Imran",
-                basic_pay = 450000,
+                Id = 15,
+                name = "Simran",
+                basic_pay = 850000,
                 start_Date = new DateTime(2020, 01, 04),
                 gender = 'M',
-                phoneNumber = "2345676655",
-                department = "HR",
+                phoneNumber = "0045676655",
+                department = "Finance",
                 address = "Pune",
-                deduction = 4000,
-                taxable =4500,
-                netpay = 5600,
-                income_tax = 546.00
+                deduction = 4500,
+                taxable =8500,
+                netpay = 5760,
+                income_tax = 12000.00
             };
             DateTime startTimes = DateTime.Now;
             payrollRepo.AddRecord(employeeModel);
             DateTime endTimes = DateTime.Now;
             Console.WriteLine("Duration without thread = " + (endTimes - startTimes));
+
+            ///UC 2 with Thread
+            DateTime startTimeWithThread = DateTime.Now;
+            employeePayroll.AddEmployee_WithThread(modelList);
+            DateTime endTimeWithThread = DateTime.Now;
+            Console.WriteLine("Duration with thread = " + (startTimeWithThread - endTimeWithThread));
         }
     }
 }
-
 
