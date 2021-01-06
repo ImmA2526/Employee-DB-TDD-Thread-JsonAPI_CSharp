@@ -39,7 +39,7 @@ namespace EmployeePayrollsTester
             EmployeeRepo payrollRepo = new EmployeeRepo();
             EmployeeModel employeeModel = new EmployeeModel
             {
-                Id = 151,
+                Id = 158,
                 name = "Abhilasha",
                 basic_pay = 80000,
                 start_Date = new DateTime(2020, 01, 04),
@@ -73,7 +73,7 @@ namespace EmployeePayrollsTester
             EmployeeRepo payrollRepo = new EmployeeRepo();
             EmployeeModel employeeModel = new EmployeeModel
             {
-                Id = 153,
+                Id = 159,
                 name = "Pratibha",
                 basic_pay = 804000,
                 start_Date = new DateTime(2020, 01, 04),
@@ -92,6 +92,26 @@ namespace EmployeePayrollsTester
             DateTime endTimes = DateTime.Now;
             Console.WriteLine("Duration without thread = " + (endTimes - startTimes));
         }
+
+        /// <summary>
+        /// UC 6 Updtae Salary
+        /// </summary>
+        
+        [TestMethod]
+        public void GivenQuery_ShouldUpdateSalary()
+        {
+            EmployeeRepo payrollRepo = new EmployeeRepo();
+            EmployeeModel model = new EmployeeModel()
+            {
+                name = "Imran",
+                basic_pay =888888
+            };
+            DateTime startDataTimeforDB = DateTime.Now;
+            payrollRepo.UpdateSalary(model);
+            DateTime stopDateTimeforDB = DateTime.Now;
+            Console.WriteLine("Duration for Updatation in DB : " + (stopDateTimeforDB - startDataTimeforDB));
+        }
     }
 }
+
 
