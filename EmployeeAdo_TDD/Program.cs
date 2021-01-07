@@ -10,7 +10,7 @@ namespace EmployeePayrol_DB
             EmployeeRepo Repo = new EmployeeRepo();
             EmployeeModel Model = new EmployeeModel();
             //Repo.GetAllEmployee();
-            Repo.UpdateSalary(Model);
+            //Repo.UpdateSalary(Model);
             
             List<EmployeeModel> modelList = new List<EmployeeModel>();
             modelList.Add(new EmployeeModel() { Id = 1, name = "Imran", basic_pay = 450000, start_Date = new DateTime(2020, 01, 04), gender = 'M', phoneNumber = "2345676655", department = "HR", address = "Pune", deduction = 4000, taxable = 4500, netpay = 5600, income_tax = 546.00 });
