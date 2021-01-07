@@ -113,6 +113,17 @@ namespace EmployeePayroll_Json_Tester
             Assert.AreEqual("Umme", dataResponse.Name);
             Assert.AreEqual("888888", dataResponse.Salary);
         }
+
+        /// <summary>
+        /// UC 5 Delete Employee
+        /// </summary>
+        [TestMethod]
+        public void DeleteEmploye_By_API()
+        {
+            RestRequest request = new RestRequest("/Employee/3", Method.DELETE);
+            IRestResponse response = client.Execute(request);
+            Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
+        }
     }
 }
 
