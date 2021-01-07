@@ -94,6 +94,25 @@ namespace EmployeePayroll_Json_Tester
                 Console.WriteLine(response.Content);
             });
         }
+
+        /// <summary>
+        /// UC 4 Update Salary
+        /// </summary>
+
+        [TestMethod]
+        public void UpdateSalary_By_API()
+        {
+            RestRequest request = new RestRequest("/Employee/5", Method.PUT);
+            JObject jObjectbody = new JObject();
+            jObjectbody.Add("Name", "Umme");
+            jObjectbody.Add("Salary", "888888");
+            request.AddParameter("application/json", jObjectbody, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
+            EmployeeModels dataResponse = JsonConvert.DeserializeObject<EmployeeModels>(response.Content);
+            Assert.AreEqual("Umme", dataResponse.Name);
+            Assert.AreEqual("888888", dataResponse.Salary);
+        }
     }
 }
 
