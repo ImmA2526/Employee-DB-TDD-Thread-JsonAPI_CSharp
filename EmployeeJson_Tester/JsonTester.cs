@@ -68,6 +68,32 @@ namespace EmployeePayroll_Json_Tester
             Assert.AreEqual("Asif", dataResponse.Name);
             Assert.AreEqual("90000", dataResponse.Salary);
         }
+
+        /// <summary>
+        /// UC 3 Add Multiple Employee
+        /// </summary>
+        [TestMethod]
+        public void AddMultiple_Employee_BY_API()
+        {
+            List<EmployeeModels> addMultiple = new List<EmployeeModels>();
+            addMultiple.Add(new EmployeeModels { Name = "Ashraf", Salary = "350000" });
+            addMultiple.Add(new EmployeeModels { Name = "Umme", Salary = "450000" });
+            addMultiple.Add(new EmployeeModels { Name = "Raju", Salary = "5500000" });
+            addMultiple.ForEach(record =>
+            {
+                RestRequest request = new RestRequest("/Employee", Method.POST);
+                JObject jObjectBody = new JObject();
+                jObjectBody.Add("Name", record.Name);
+                jObjectBody.Add("Salary", record.Salary);
+                request.AddParameter("application/json", jObjectBody, ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                Assert.AreEqual(response.StatusCode, HttpStatusCode.Created);
+                EmployeeModels dataResorce = JsonConvert.DeserializeObject<EmployeeModels>(response.Content);
+                Assert.AreEqual(record.Name, dataResorce.Name);
+                Assert.AreEqual(record.Salary, dataResorce.Salary);
+                Console.WriteLine(response.Content);
+            });
+        }
     }
 }
 
